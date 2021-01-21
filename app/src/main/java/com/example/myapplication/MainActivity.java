@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+//тест гита
 
 
 public class MainActivity extends AppCompatActivity {
