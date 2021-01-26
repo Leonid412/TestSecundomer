@@ -10,51 +10,73 @@
         android:id="@+id/editTextTime"
         android:layout_width="278dp"
         android:layout_height="48dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="526dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        app:layout_constraintTop_toBottomOf="@+id/stopbtn"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/startbtn"
         android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="5dp"
         android:checkable="false"
+        android:onClick="startOnClick"
         android:text="@string/Start"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/stopbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/stopbtn"
         android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="5dp"
+        android:onClick="stopOnClick"
         android:text="@string/Stop"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button1"
+        app:layout_constraintEnd_toStartOf="@+id/resetbtn"
+        app:layout_constraintStart_toEndOf="@+id/startbtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/resetbtn"
         android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:text="@string/Clear"
+        android:onClick="resetOnClick"
+        android:text="@string/Reset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/stopbtn"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="298dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="273dp"
+        android:layout_marginBottom="378dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime"
+        app:layout_constraintVertical_bias="0.882" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
