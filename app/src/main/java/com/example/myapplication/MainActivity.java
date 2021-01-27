@@ -10,9 +10,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonStart;
-    private Button buttonStop;
-    private Button buttonClear;
     public EditText screenTimer;
     private final SimpleDateFormat formatter = new SimpleDateFormat("mm:ss:SS");   //создаю форматер дату, с помощью которого буду выводить время
     private static long counterStart;                                                      //создаю переменную для начала отсчета
@@ -30,53 +27,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonStart = findViewById(R.id.buttonStart);
-        buttonStop = findViewById(R.id.buttonStop);
-        buttonClear = findViewById(R.id.buttonClear);
         screenTimer = findViewById(R.id.editTextTime);
-
-        screenTimer.setText(formatter.format(counter));
-
-        View.OnClickListener startOnClickListener = new View.OnClickListener() {      //создаю лисенер для кнопки Старт
-            @Override
-            public void onClick(View v) {
-                if (!counterRun) {
-                    counterStart = new Date().getTime() - counter;
-                    counterRun = true;                                               //флаг секундомер запущен
-
-                    TimeRun timeRunStart = new TimeRun(screenTimer);                 //создаю элемент Класса с интерфейсом Runnable, передаю в него Вьюху,в которой будут тикать циферки
-                    Thread threadTimeRun = new Thread(timeRunStart);                 //создаю поток , передаю в него объект Класса с интерфейсом Runnable
-                    threadTimeRun.start();                                           // запускаю поток
-                }
-            }
-        };
-        buttonStart.setOnClickListener(startOnClickListener);                        // вешаю лисенер на кнопку Старт
-
-        View.OnClickListener stopOnClickListener = new View.OnClickListener() {     //создаю лисенер для кнопки Стоп
-            @Override
-            public void onClick(View v) {
-                if (counterRun) {
-                    counterRun = false;                                            //флаг секундомер остановлен
-                    counterStop = new Date().getTime();
-                    counter = counterStop - counterStart;
-                }
-
-            }
-        };
-        buttonStop.setOnClickListener(stopOnClickListener);                       // вешаю лисенер на кнопку Стоп
-
-        View.OnClickListener clearOnClickListener = new View.OnClickListener() {  //создаю лисенер для кнопки Клеар
-
-            @Override
-            public void onClick(View v) {
-                counterRun = false;
-                counter = 0;
-                screenTimer.setText(formatter.format(counter));
-            }
-        };
-        buttonClear.setOnClickListener(clearOnClickListener); // вешаю лисенер на кнопку Клеар
-
     }
 
+    public void startOnClick(View view) {
+        if (!counterRun) {
+            counterStart = new Date().getTime() - counter;
+            counterRun = true;                                               //флаг секундомер запущен
+
+            TimeRun timeRunStart = new TimeRun(screenTimer);                 //создаю элемент Класса с интерфейсом Runnable, передаю в него Вьюху,в которой будут тикать циферки
+            Thread threadTimeRun = new Thread(timeRunStart);                 //создаю поток , передаю в него объект Класса с интерфейсом Runnable
+            threadTimeRun.start();                                           // запускаю поток
+        }
+    }
+
+    public void stopOnClick(View view) {
+        if (counterRun) {
+            counterRun = false;                                            //флаг секундомер остановлен
+            counterStop = new Date().getTime();
+            counter = counterStop - counterStart;
+        }
+    }
+
+    public void resetOnClick(View view) {
+        counterRun = false;
+        counter = 0;
+        screenTimer.setText(formatter.format(counter));
+
+    }
 }
 
